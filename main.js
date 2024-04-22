@@ -24,7 +24,7 @@ function recomendarRopa (){
         case "otoño" :
             ropaRecomendada = otoñoRopa;
             break;
-        case "invierno":
+        case "invierno":   
             ropaRecomendada = inviernoRopa;
             break;
         default:

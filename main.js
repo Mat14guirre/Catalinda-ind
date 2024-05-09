@@ -101,3 +101,19 @@ sumarStock(5)
 restarStock(2)
 
 console.log (mostrarStock())
+
+
+//FORMULARIO REGISTRO --------------------------------------------------------------------------------
+
+function enviarRegistro(){
+    const nombre = document.getElementById('nombre').value ;
+    const email= document.getElementById ('email').value;
+    const contraseña= document.getElementById ('contraseña').value;
+
+    console.log ('Nombre',nombre);
+    console.log ('Correo electronico', email);
+    console.log ('Contraseña', contraseña);
+
+    document.getElementById ('registroForm').reset () ; return false
+}
+

@@ -1,41 +1,3 @@
-//RECOMENDAR ROPA SEGUN EPOCA DEL AÑO -----------------------------------------------------------------
-
-const veranoRopa = ["musculosa " , "bermuda ", "zandalias ", " ojotas"];
-
-const primaveraRopa = ["remera ", "pantalon liviano ", "zapatillas "];
-
-const otoñoRopa = ["buzo liviano ", "campera liviana ","pantalon " , "zapatillas "];
-
-const inviernoRopa = ["remera termica ", "campera abrigada ", "pantalon grueso ", "botas "];
-
-function recomendarRopa (){
-
-    let etapaAño = prompt ("Bienvenidos, elija una etapa  del año para recomendarte- ej: otoño" ).toLowerCase ();
-
-    let ropaRecomendada ;
-
-    switch (etapaAño){
-        case "primavera":
-            ropaRecomendada = primaveraRopa ;
-            break;
-        case "verano" :
-            ropaRecomendada = veranoRopa ;
-            break ;
-        case "otoño" :
-            ropaRecomendada = otoñoRopa;
-            break;
-        case "invierno":   
-            ropaRecomendada = inviernoRopa;
-            break;
-        default:
-            alert ("actualice y escriba una etapa del año valida(verano/primavera/ otoño /invierno")   
-            return             
-    }
-    alert ("para " + etapaAño + " te ofrecemos: "+ ropaRecomendada )
-}
-
-recomendarRopa (); 
-
 //CALCULAR COSTO DE ENVIO DE PRODUCTO-----------------------------------------------------------------
 
 // variable para costo base de envio
@@ -105,15 +67,62 @@ console.log (mostrarStock())
 
 //FORMULARIO REGISTRO --------------------------------------------------------------------------------
 
-function enviarRegistro(){
-    const nombre = document.getElementById('nombre').value ;
-    const email= document.getElementById ('email').value;
-    const contraseña= document.getElementById ('contraseña').value;
+document.getElementById("registroButton").addEventListener("click",function(){
 
-    console.log ('Nombre',nombre);
-    console.log ('Correo electronico', email);
-    console.log ('Contraseña', contraseña);
+    let nombre=document.getElementById("nombre").value;
+    let email=document.getElementById("email").value;
+    let password=document.getElementById("password").value;
 
-    document.getElementById ('registroForm').reset () ; return false
-}
+    //verifica si el email esta registrado
+
+    if(localStorage.getItem(email)!==null){
+        document.getElementById("mensajeError").innerText= "este email ya esta regsitrado";
+        document.getElementById("mensajeError").style.display="block";
+        return;
+    }
+
+    //guarda los datos en localstorage
+
+    localStorage.setItem(email,JSON.stringify({nombre: nombre, password : password}));
+
+    //oculta formulario de registro y muestra inicio de sesion
+
+    document.getElementById ("registroForm").style.display="none";
+    document.getElementById ("inicioSesionForm").style.display="block";
+}); 
+
+document.getElementById("inicioSesionButton").addEventListener("click",function(){
+    let email = document.getElementById ("loginEmail").value;
+    let password= document.getElementById ("loginPassword").value;
+
+    //verifica si el email esta registrado
+    if(localStorage.getItem(email)===null){
+        document.getElementById("mensajeError").innerText="este email no esta registrado";
+        document.getElementById("mensajeError").style.display="block";
+        return;
+    }
+
+    //obtener datos almacenados
+    let usuario= JSON.parse(localStorage.getItem(email));
+
+    //verifica si la contraseña es correcta 
+
+    if(usuario.password !== password){
+        document.getElementById("mensajeError").innerText="contraseña incorrecta";
+        document.getElementById("mensajeError").style.display="block";
+        return;
+    }
+
+    //inicio de sesion exitoso
+    document.getElementById("mensajeError").innerText="";
+    document.getElementById("mensajeError").style.display="none";
+    document.getElementById("registroForm").style.display="none";
+    document.getElementById("inicioSesionForm").style.display="none";
+    document.getElementById("mensajeparacarrito").style.display="none";
+
+    alert("Bienvenido, " + usuario.nombre + "!");
+    
+});
+
+
 

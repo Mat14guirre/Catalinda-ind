@@ -115,17 +115,12 @@ document.getElementById("inicioSesionButton").addEventListener("click",function(
         return;
     }
     //inicio de sesion exitoso
-    
-    if(usuario.password === password) {
-        document.getElementById("mensajeError").innerText="";
-        document.getElementById("mensajeError").style.display="none";
-        document.getElementById("registroForm").style.display="none";
-        document.getElementById("inicioSesionForm").style.display="none";
-        document.getElementById("mensajeparacarrito").style.display="none";
-        alert("Bienvenido, " + usuario.nombre + "!");
-        return;
-
-    }
+    document.getElementById("mensajeError").innerText="";
+    document.getElementById("mensajeError").style.display="none";
+    document.getElementById("registroForm").style.display="none";
+    document.getElementById("inicioSesionForm").style.display="none";
+    document.getElementById("mensajeparacarrito").style.display="none";
+    alert("Bienvenido, " + usuario.nombre + "!");
 
 }); 
 

@@ -18,6 +18,42 @@
     <div class="logo-conteiner">
         <img class="logo-catalina" src="../images/logo-catalina.jpg" alt="">
     </div>
+
+    <div>
+        <a class="carrito" href="../pages/carrito.html"><img  src="../icons/cart.svg" alt="">Mi carrito</a>
+        <p id="mensajeparacarrito">Para usar el carrito es necesario iniciar sesion</p>
+    </div>
+
+    <!-- formulario de registro -->
+
+    <div class="form1" id="registroForm">
+        <h4>Si es tu primera vez registrate aqui:</h4>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre">
+        <label for="email">Email:</label>
+        <input type="email" id="email">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password">
+
+        <button id="registroButton">Registrarse</button>
+    </div>
+
+    <!-- formularaio de inicio de sesion -->
+
+    <div class="form1" id="inicioSesionForm" >
+        <h4>Inicia sesion</h4>
+        <label for="loginEmail">Email:</label>
+        <input type="email" id="loginEmail">
+        <label for="loginPassword">Contraseña</label>
+        <input type="password" id="loginPassword">
+
+        <button id="inicioSesionButton">Iniciar sesion</button>
+    </div>
+
+    
+
+    <p id="mensajeError"></p>
+
      <!-- NAVBAR -->
     <nav class="navbar">
         <div class="container-fluid">
@@ -37,7 +73,35 @@
     </header>
     <!-- MAIN -->
     <main>
+        <div class="producto" data-nombre="pantalon niño" data-precio="3500">
+            <p>pantalon niño - $3500</p>
+            <button onclick="agregarAlCarrito('pantalon niño',3500)" > Agregar al carrito</button>
+
+        </div>
         
+        <div class="producto" data-nombre="Remera kitty" data-precio="2000">
+            <p>Remera kitty- $2000</p>
+            <button onclick="agregarAlCarrito('Remera kitty',2000)" > Agregar al carrito</button>
+
+        </div>
+
+        <div class="producto" data-nombre="Remera ben 10" data-precio="2400">
+            <p>Remera ben 10 - $2400</p>
+            <button onclick="agregarAlCarrito('Remera ben 10',2400)" > Agregar al carrito</button>
+
+        </div>
+        
+        
+        <div class="carritodecompras1">
+            <h1 class="carrito-page">Mi carrito</h1>
+
+            <div id="carrito" >
+                <h2>Carrito de compras</h2>
+                <ul id="listaProductos"></ul>
+                <p>Total: <span id="totalCarrito">$0</span></p>
+            </div>   
+
+        </div>
 
 
     </main>
@@ -121,7 +185,7 @@
         <!-- ENLACES JS Y FRAMEWORS -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
+    <script src="../main.js"></script>
 
 </body>
 </html>

@@ -127,7 +127,7 @@ h3 {
 
 #mensajeError{
     color: red;
-}
+} 
 
 .form{
     margin: 10px;
@@ -143,4 +143,11 @@ h3 {
 #mensajeparacarrito{
     margin-left: 20px;
     color: rgb(199, 59, 218);
+}
+
+.form1 {
+    display: none;
+}
+.carritodecompras1 {
+    display:none;
 }

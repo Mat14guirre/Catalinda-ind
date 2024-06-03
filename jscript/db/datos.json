@@ -1,0 +1,73 @@
+[
+    {
+        "id":1,
+        "nombre": "jean niños",
+        "precio": 8500
+    },
+
+    {
+        "id":2,
+        "nombre": "jean mujer",
+        "precio": 10500
+    },
+
+    {
+        "id":3,
+        "nombre": "joggin invierno",
+        "precio": 8400
+    },
+
+    {
+        "id":4,
+        "nombre": "jean con puños",
+        "precio": 9000
+    },
+
+    {
+        "id":5,
+        "nombre": "Remera reversible",
+        "precio": 7500
+    },
+
+    {
+        "id":6,
+        "nombre": "Remera oversize",
+        "precio": 7200
+    },
+
+    {
+        "id":7,
+        "nombre": "jean oscuro",
+        "precio": 14000
+    },
+
+    {
+        "id":8,
+        "nombre": "joggin los simpsons",
+        "precio": 7600
+    },
+
+    {
+        "id":9,
+        "nombre": "joggin dragon ball",
+        "precio": 7400
+    },
+
+    {
+        "id":10,
+        "nombre": "jean oversize",
+        "precio": 11400
+    },
+
+    {
+        "id":11,
+        "nombre": "joggin elastizado",
+        "precio": 9500
+    },
+
+    {
+        "id":12,
+        "nombre": "Remera termica",
+        "precio": 12000
+    }
+]

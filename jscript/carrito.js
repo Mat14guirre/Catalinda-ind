@@ -1,4 +1,3 @@
-//CARRITO DE COMPRAS----------------------------------------------------------------------------------
 
 //obtener carrito del localstorage
 let carrito =JSON.parse(localStorage.getItem("carrito"))||[];
@@ -16,7 +15,7 @@ carrito.forEach(function(producto,index){
     //agregar un boton para eliminar producto de carrito
 
     let botonEliminar=document.createElement("button");
-    botonEliminar.textContent="Eliminar";
+    botonEliminar.innerHTML=`<button class="estiloboton">Eliminar</button>`;
     botonEliminar.onclick=function(){
         eliminarProducto(index);
     };
@@ -27,18 +26,6 @@ carrito.forEach(function(producto,index){
 document.getElementById("totalCarrito").textContent="$"+ totalCarrito.toFixed(2);
 
 
-
-//funcion para agregar al carrito
-function agregarAlCarrito(nombre,precio){
-    //obtener el carrito de localstorage o crear uno nuevo si no existe
-    let carrito=JSON.parse(localStorage.getItem("carrito"))||[];
-
-    //agregar el produco al carrito
-    carrito.push({nombre:nombre,precio:precio});
-
-    //guardar el carrito actualizado en el localstorage
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-}
 
 //funcion para eliminar del carrito
 

@@ -1,91 +1,63 @@
 
-//CALCULAR COSTO DE ENVIO DE PRODUCTO-----------------------------------------------------------------
-
-// variable para costo base de envio
-let costoBaseEnvio = 1000 ;
-
-//funcion para calcular el costo de envio segun kilometros  1km= 50pesos
-function calcularCostoEnvio (distancia) {
-    let costoPorKilometro = 50 ; 
-
-//distancia * costo de kilometro + costo base de envio
-    let costoEnvio = distancia * costoPorKilometro + costoBaseEnvio ;
-
-    return costoEnvio;
-}
-//ejemplo con 20 kilometros
-let distanciaEnvio = 20
-
-let costoTotalEnvio = calcularCostoEnvio (distanciaEnvio) ;
-
-console.log ("el costo del envio por "+ distanciaEnvio+ "km, es $ " +  costoTotalEnvio);
 
 
-//CONTROLADOR DE STOCK ---------------------------------------------------------------------------
+let carrito = []
 
-let stockRemeras = 30
-let stockBermudas= 40
-let stockZapatillas= 10
-let stockPantalones= 20
-
-function mostrarStock (){
-    console.log ("stock actual: ")
-    console.log ("remeras: "+ stockRemeras)
-    console.log ("bermudas: "+ stockBermudas)
-    console.log ("zapatillas: "+ stockZapatillas)
-    console.log ("pantalones: "+ stockPantalones)
-}
-console.log (mostrarStock())
-
-//ejemplo sumar stock con remeras
-function sumarStock (cantidad){
-    for (let i=0 ; i < cantidad; i++ ){
-        stockRemeras++;
-    }
-    
-}
-
-//ejemplo restar stock en pantalones
-function restarStock (cantidad){
-    for (let i = 0; i< cantidad; i++){
-        if (stockPantalones >0) {
-            stockPantalones--;
-        }else {
-            console.log ("no hay mas stock")
-            break
+async function obtenerDatos(){
+    try {
+        const respuesta= await fetch ('../jscript/db/datos.json');
+        if(!respuesta.ok){
+            throw new error("Error en la respuesta de la red");
         }
+        const datos= await respuesta.json();
+
+        mostrarDatos(datos);
+
+    }catch (error){
+        console.error("error al obtener datos",error);
     }
-
 }
-console.log ("SE ENCONTRARON CAMBIOS: ")
 
-sumarStock(5)
+function mostrarDatos (datos){
+    const listaProductos= document.getElementById ('lista-productos');
+    datos.forEach (item=>{
+        const elementoLista= document.createElement ("div");
+        elementoLista.innerHTML= `<h3 class="letra-datos">${item.nombre}</h3> 
+                                 <p class="precio-datos">$ ${item.precio}</p>`
 
-restarStock(2)
-
-console.log (mostrarStock())
+        const botonAgregar= document.createElement('button');
+        botonAgregar.innerHTML = `<button class="estiloboton">Comprar</button>`;
+        botonAgregar.onclick =()=>agregarAlCarrito(item);
+        
+        elementoLista.appendChild(botonAgregar);
+        listaProductos.appendChild(elementoLista);
+    });
+}
 
 //funcion para agregar al carrito
-function agregarAlCarrito(nombre,precio){
+function agregarAlCarrito(producto){
     //obtener el carrito de localstorage o crear uno nuevo si no existe
     let carrito=JSON.parse(localStorage.getItem("carrito"))||[];
 
     //agregar el produco al carrito
-    carrito.push({nombre:nombre,precio:precio});
+    carrito.push(producto);
 
     //guardar el carrito actualizado en el localstorage
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-}
+    localStorage.setItem("carrito", JSON.stringify(carrito)); 
+  }
 
-//funcion para eliminar del carrito
+  
+window.onload = obtenerDatos;
 
-function eliminarProducto (index) {
-    let carrito= JSON.parse(localStorage.getItem("carrito"))||[];
-//eliminar producto    
-    carrito.splice(index,1);
 
-    localStorage.setItem("carrito",JSON.stringify(carrito));
-//recargar pagina para ver cambios
-    location.reload();
-}
+
+
+
+
+
+
+
+
+
+
 

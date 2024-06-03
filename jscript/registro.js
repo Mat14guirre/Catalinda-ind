@@ -21,5 +21,5 @@ document.getElementById("registroButton").addEventListener("click",function(){
     //oculta formulario de registro y muestra inicio de sesion
 
     document.getElementById ("registroForm").style.display="none";
-    document.getElementById ("inicioSesionForm").style.display="block";
+    
 });

@@ -23,10 +23,11 @@ function mostrarDatos (datos){
     datos.forEach (item=>{
         const elementoLista= document.createElement ("div");
         elementoLista.innerHTML= `<h3 class="letra-datos">${item.nombre}</h3> 
-                                 <p class="precio-datos">$ ${item.precio}</p>`
+                                <p class="precio-datos">$ ${item.precio}</p>
+                                <img class="imagen-datos" src="${item.imagen}" alt=> `
 
         const botonAgregar= document.createElement('button');
-        botonAgregar.innerHTML = `<button class="estiloboton">Comprar</button>`;
+        botonAgregar.innerHTML = `<button class="estilo-boton">Agregar</button>`;
         botonAgregar.onclick =()=>agregarAlCarrito(item);
         
         elementoLista.appendChild(botonAgregar);
@@ -44,6 +45,23 @@ function agregarAlCarrito(producto){
 
     //guardar el carrito actualizado en el localstorage
     localStorage.setItem("carrito", JSON.stringify(carrito)); 
+
+    Toastify({
+        text: " Agregado al carrito!",
+        duration: 2000,
+        destination: "#",
+        newWindow: false,
+        close: false,
+        gravity: "bottom", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, rgb(102, 46, 102), rgb(169, 85, 248))",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
+
+
   }
 
   

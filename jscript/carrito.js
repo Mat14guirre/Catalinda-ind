@@ -30,12 +30,15 @@ document.getElementById("totalCarrito").textContent="$"+ totalCarrito.toFixed(2)
 
 function eliminarProducto (index) {
     let carrito= JSON.parse(localStorage.getItem("carrito"))||[];
+
 //eliminar producto    
     carrito.splice(index,1);
 
     localStorage.setItem("carrito",JSON.stringify(carrito));
+    
 //recargar pagina para ver cambios
     location.reload();
+    
 }
 
 //boton para simular compra
@@ -44,7 +47,7 @@ botonComprar.id='boton-comprar';
 botonComprar.className="btn-comprar"
 botonComprar.textContent="Realizar compra";
 document.body.appendChild (botonComprar);
-
+ 
 botonComprar.addEventListener('click',function(){
     Toastify({
         text: "Gracias por su compra!",

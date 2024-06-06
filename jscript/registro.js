@@ -12,6 +12,7 @@ document.getElementById("registroButton").addEventListener("click",function(){
         document.getElementById("mensajeError").innerText= "este email ya esta regsitrado";
         document.getElementById("mensajeError").style.display="block";
         return;
+        
     }
 
     //guarda los datos en localstorage
@@ -21,5 +22,5 @@ document.getElementById("registroButton").addEventListener("click",function(){
     //oculta formulario de registro y muestra inicio de sesion
 
     document.getElementById ("registroForm").style.display="none";
-    
+    swal("Bienvenido!", "Ya estas registrado", "success");
 });

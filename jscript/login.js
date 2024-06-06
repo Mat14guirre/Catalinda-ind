@@ -25,6 +25,8 @@ document.getElementById("inicioSesionButton").addEventListener("click",function(
     document.getElementById("mensajeError").innerText="";
     document.getElementById("mensajeError").style.display="none";
     document.getElementById("inicioSesionForm").style.display="none";
-    alert("Bienvenido, " + usuario.nombre + "!");
+    swal("Bievenido!", "veamos las ofertas de hoy.", "success", {
+        button: "ir a comprar",
+      });
 
 }); 
